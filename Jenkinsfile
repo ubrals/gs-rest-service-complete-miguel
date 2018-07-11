@@ -4,7 +4,8 @@ pipeline {
 //            image 'maven:3.3.3' 
 //            image 'maven:3.5.4' 
 //            image 'maven:3-alpine' 
-            image 'jenkinsci/blueocean' 
+//            image 'jenkinsci/blueocean' 
+            image 'maven:alpine' 
 //            args '-v /home/ec2-user/.m2' 
         } 
     }
