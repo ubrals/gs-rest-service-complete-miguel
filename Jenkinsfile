@@ -3,24 +3,25 @@ pipeline {
         docker { 
 //            image 'maven:3.3.3' 
 //            image 'maven:3.5.4' 
-//            image 'maven:3-alpine' 
+            image 'maven:3-alpine' 
 //            image 'jenkinsci/blueocean' 
-            image 'maven:alpine' 
-//            args '-v /home/ec2-user/.m2' 
+//            image 'maven:alpine' 
+            args '-v /home/ec2-user/.m2' 
         } 
     }
     stages {
         stage('build') {
             steps {
 //                sh 'mvn --version'
-                sh 'mvn -B package'
+//                sh 'mvn -B package'
+                sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('test') {
-            steps {
-                sh 'mvn -B test'
-            }
-        }
+//        stage('test') {
+//            steps {
+//                sh 'mvn -B test'
+//            }
+//        }
     }
 }
 
