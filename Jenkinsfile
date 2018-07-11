@@ -1,9 +1,22 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent { 
+        docker { 
+//            image 'maven:3.3.3' 
+//            image 'maven:3.5.4' 
+            image 'maven:3-alpine' 
+            args '-v /home/ec2-user/.m2' 
+        } 
+    }
     stages {
         stage('build') {
             steps {
-                sh 'mvn --version'
+//                sh 'mvn --version'
+                sh 'mvn package'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'mvn test'
             }
         }
     }
