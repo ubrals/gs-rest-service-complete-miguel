@@ -1,27 +1,15 @@
 pipeline {
-    agent { 
-        docker { 
-//            image 'maven:3.3.3' 
-//            image 'maven:3.5.4' 
-            image 'maven:3-alpine' 
-//            image 'jenkinsci/blueocean' 
-//            image 'maven:alpine' 
-            args '-v /home/ec2-user/.m2' 
-        } 
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
     }
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-//                sh 'mvn --version'
-//                sh 'mvn -B package'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-//        stage('test') {
-//            steps {
-//                sh 'mvn -B test'
-//            }
-//        }
     }
 }
-
